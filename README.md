@@ -1,7 +1,7 @@
 # Take-Home-Challenge---Hatio
  
 # Todo Management Project
-# Overview
+## Overview
 Welcome to the Todo Management Project! This Django application allows users to manage tasks (todos) within projects. Features include creating, updating, deleting projects and todos, managing todo status while updating the task, and exporting project summaries as GitHub Gists in Markdown format.
 
 ## Features
@@ -11,8 +11,8 @@ Todo Management: Add, update, delete, and mark todos as completed or pending.
 Status Updates: Change todo status directly from the homepage.
 Summary Export: Generate and export project summaries as GitHub Gists in Markdown format.
 
-# Installation
-# Prerequisites
+## Installation
+## Prerequisites
 Ensure you have the following installed:
 
 Python 3.x
@@ -20,7 +20,7 @@ Django 3.x or higher
 A GitHub Token (for exporting Gists)
 
 
-# Setup
+## Setup
  1. Clone the Repository
 git clone https://github.com/yourusername/todo-management-project.git
 cd todo-management-project
@@ -42,7 +42,7 @@ python manage.py migrate
  5. Create a Superuser (Optional, for admin access)
 python manage.py createsuperuser
 
-# Running the Application
+## Running the Application
  1. Start the Development Server
 python manage.py runserver
 
@@ -52,14 +52,14 @@ Navigate to http://127.0.0.1:8000/ in your web browser.
 **Stop the Server:** Press Ctrl + C in the command prompt where the server is running.
 
 
-# Usage
+## Usage
 Home Page: View a list of projects. Click on a project to see its details and todos.
 Project Details: View, edit, and delete projects. Add todos to the project.
 Todos: Mark todos as completed or pending directly from the home page. Update or delete todos as needed.
 Export Summary: Click the "Export as Gist" button on the project details page to export the project summary as a GitHub Gist.
 
 
-# URL Patterns
+## URL Patterns
 Here are the key routes available in the application:
 
 `/` - Home Page: View all projects and todos.
@@ -77,7 +77,7 @@ Here are the key routes available in the application:
 `/project/export/<int:project_id>/` - Export Project Summary as Gist: Generate and export a project summary in Markdown format.
 
 
-# Contributing
+## Contributing
 We welcome contributions to improve the project. To contribute:
 
  1. Fork the repository.
@@ -88,7 +88,7 @@ We welcome contributions to improve the project. To contribute:
  6. Open a Pull Request.
 
 
-# Acknowledgments
+## Acknowledgments
 **Django:** The primary framework used for building this application. Django is a high-level Python web framework that encourages rapid development and clean, practical design.
 
 **GitHub:** For hosting the project repository and for Gist API integration, which allows exporting project summaries. GitHub provides a platform for version control and collaboration

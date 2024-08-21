@@ -6,6 +6,7 @@ Welcome to the Todo Management Project! This Django application allows users to 
 
 ## Features
 User Authentication: Register, login, and manage user accounts.
+
 Project Management: Create, edit, and delete projects.
 Todo Management: Add, update, delete, and mark todos as completed or pending.
 Status Updates: Change todo status directly from the homepage.

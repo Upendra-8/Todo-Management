@@ -20,7 +20,9 @@ Summary Export: Generate and export project summaries as GitHub Gists in Markdow
 Ensure you have the following installed:
 
 Python 3.x
+
 Django 3.x or higher
+
 A GitHub Token (for exporting Gists)
 
 

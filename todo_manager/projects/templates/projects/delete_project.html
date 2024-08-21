@@ -1,0 +1,116 @@
+{% load static %}   <!-- It loads static files (CSS, JS, images) in Django templates. -->
+{% load tz %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        h1 {
+            color: #dc3545;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .project-details {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .project-details div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .project-details strong {
+            font-weight: bold;
+            width: 150px; /* Fixed width for labels */
+            text-align: left;
+        }
+
+        .project-details span {
+            flex: 1; /* Allow the value to take the remaining space */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure you want to delete "{{ project.title }}"?</h2>
+        <div class="project-details">
+            <div>
+                <strong>Title:</strong>
+                <span>{{ project.title }}</span>
+            </div>
+            <div>
+                <strong>Created on:</strong>
+                <span>{{ project.created_date|localtime|date:"F j, Y, g:i a" }}</span>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm Delete</button>
+            <a href="{% url 'project_detail' project.id %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

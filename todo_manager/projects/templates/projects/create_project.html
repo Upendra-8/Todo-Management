@@ -1,0 +1,32 @@
+{% load static %}   <!-- It loads static files (CSS, JS, images) in Django templates. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Project</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; }
+        h1 { text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .btn { display: inline-block; padding: 10px 15px; background: #007bff; color: #fff; border-radius: 5px; text-decoration: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Project</h1>
+        <form method="post">
+            {% csrf_token %}    <!-- Includes a CSRF token for secure form submissions in Django. -->
+            <div class="form-group">
+                <label for="title">Project Title:</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <button type="submit" class="btn">Create Project</button>
+        </form>
+    </div>
+</body>
+</html>

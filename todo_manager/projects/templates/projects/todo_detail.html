@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button, a {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover, a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo Details</h1>
+        
+        <p><strong>Title:</strong> {{ todo.title }}</p>
+        <p><strong>Description:</strong> {{ todo.description }}</p>
+        <p><strong>Status:</strong> {{ todo.status }}</p>
+
+        <form method="post" style="margin-top: 20px;">
+            {% csrf_token %}
+            <button type="submit" name="update">Update</button>
+            <button type="submit" name="delete" style="background-color: #dc3545;">Delete</button>
+            <a href="{% url 'home' %}" style="background-color: #6c757d;">Back to Todos</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+{% load static %}   <!-- It loads static files (CSS, JS, images) in Django templates. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Todo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            color: red;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group label {
+            margin-left: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Todo</h1>
+
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}    <!-- Includes a CSRF token for secure form submissions in Django. -->
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="{{ todo.title }}" maxlength="255" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required>{{ todo.description }}</textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <label for="status">Status</label>
+                <input type="checkbox" id="status" name="status" {% if todo.status %}checked{% endif %}>
+            </div>
+
+            <button type="submit">Update Todo</button>
+        </form>
+
+        <a href="{% url 'home' %}">Back to Project</a>
+    </div>
+</body>
+</html>

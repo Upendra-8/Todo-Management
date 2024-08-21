@@ -1,0 +1,115 @@
+{% load static %}   <!-- It loads static files (CSS, JS, images) in Django templates. -->
+{% load tz %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Todo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        h1 {
+            color: #dc3545;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .details {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .details strong {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+
+        .details span {
+            display: inline-block;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Todo</h1>
+
+        <p>Are you sure you want to delete the following todo?</p>
+        
+        <div class="details">
+            <div>
+                <strong>Title:</strong> <span>{{ todo.title }}</span>
+            </div><br>
+            <div>
+                <strong>Description:</strong> <span>{{ todo.description }}</span>
+            </div><br>
+            <div>
+                <strong>Created on:</strong> <span>{{ todo.created_date|localtime|date:"F j, Y, g:i a" }}</span>
+            </div>
+        </div>
+        
+        <form method="post">
+            {% csrf_token %}    <!-- Includes a CSRF token for secure form submissions in Django. -->
+            <button type="submit">Delete</button>
+        </form>
+
+        <a href="{% url 'home' %}">Cancel</a>
+    </div>
+</body>
+</html>

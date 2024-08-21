@@ -1,0 +1,188 @@
+{% load static %}
+{% load tz %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p, li {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        button, a {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover, a:hover {
+            background-color: #45a049;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 30px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"], input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        .export-gist-btn {
+                display: inline-block;
+                padding: 10px 15px;
+                margin-top: 10px;
+                background-color: #2196F3; /* Blue color for the export button */
+                color: white;
+                text-decoration: none;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        
+        .export-gist-btn:hover {
+                background-color: #1E88E5; /* Darker blue on hover */
+            }    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project 1</h1>
+        
+        <div>
+            <!-- Project Title -->
+            <h2 id="project-title">{{ project.title }}</h2>
+            
+            <!-- Edit Button -->
+            <button id="edit-title-btn">Edit Title</button>
+
+            <!-- Edit Title Form (Initially Hidden) -->
+            <form id="edit-title-form" action="{% url 'edit_project_title' project.id %}" method="post" style="display: none;">
+                {% csrf_token %}
+                <input type="text" name="title" value="{{ project.title }}" required>
+                <button type="submit">Save</button>
+                <button type="button" id="cancel-edit-btn">Cancel</button>
+            </form>
+
+            <p><strong>Created Date:</strong> {{ project.created_date|localtime|date:"F j, Y, g:i a" }}</p>
+
+            <h3>Completed Todos</h3>
+            {% if project.completed_todos %}
+                <ul>
+                    {% for todo in project.completed_todos %}
+                        <li>
+                            <strong>{{ todo.title }}</strong><br>
+                            {{ todo.description }}<br>
+                            <em>Completed on:</em> {{ todo.updated_date|localtime|date:"F j, Y, g:i a" }}<br>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No completed todos.</p>
+            {% endif %}
+
+            <h3>Pending Todos</h3>
+            {% if project.pending_todos %}
+                <ul>
+                    {% for todo in project.pending_todos %}
+                        <li>
+                            <strong>{{ todo.title }}</strong><br>
+                            {{ todo.description }}<br>
+                            <em>Created on:</em> {{ todo.created_date|localtime|date:"F j, Y, g:i a" }}<br>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No pending todos.</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'home' %}">Back to Projects</a> |
+        <a href="{% url 'delete_project' project.id %}" style="background-color: #f44336; color: white; padding: 10px 15px; border-radius: 4px;">Delete Project</a> |
+        <a href="{% url 'create_todo' project.id %}">Add Todo</a> |
+        <a href="{% url 'export_gist' project.id %}" class="export-gist-btn">Export as Gist</a>
+
+    </div>
+
+    <script>
+        document.getElementById('edit-title-btn').addEventListener('click', function() {
+            document.getElementById('edit-title-form').style.display = 'block';
+            document.getElementById('edit-title-btn').style.display = 'none';
+            document.getElementById('project-title').style.display = 'none';
+        });
+
+        document.getElementById('cancel-edit-btn').addEventListener('click', function() {
+            document.getElementById('edit-title-form').style.display = 'none';
+            document.getElementById('edit-title-btn').style.display = 'block';
+            document.getElementById('project-title').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

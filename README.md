@@ -8,8 +8,11 @@ Welcome to the Todo Management Project! This Django application allows users to 
 User Authentication: Register, login, and manage user accounts.
 
 Project Management: Create, edit, and delete projects.
+
 Todo Management: Add, update, delete, and mark todos as completed or pending.
+
 Status Updates: Change todo status directly from the homepage.
+
 Summary Export: Generate and export project summaries as GitHub Gists in Markdown format.
 
 ## Installation
@@ -37,6 +40,7 @@ python manage.py migrate
 
 **Create a New Migration:** If you make changes to models, create new migrations:
  python manage.py makemigrations
+ 
  **Apply New Migrations:** Apply any new migrations:
  python manage.py migrate
  
@@ -55,8 +59,11 @@ Navigate to http://127.0.0.1:8000/ in your web browser.
 
 ## Usage
 Home Page: View a list of projects. Click on a project to see its details and todos.
+
 Project Details: View, edit, and delete projects. Add todos to the project.
+
 Todos: Mark todos as completed or pending directly from the home page. Update or delete todos as needed.
+
 Export Summary: Click the "Export as Gist" button on the project details page to export the project summary as a GitHub Gist.
 
 

@@ -62,19 +62,19 @@ Export Summary: Click the "Export as Gist" button on the project details page to
 ## URL Patterns
 Here are the key routes available in the application:
 
-`/` - Home Page: View all projects and todos.
-`/login/` - Login Page: User login.
-`/logout/` - Logout: End the current user session.
-`/register/` - Registration Page: Create a new user account.
-`/project/new/` - Create Project: Create a new project.
-`/todo/delete/<int:pk>/` - Delete Project: Remove a project.
-`/view_project/<int:project_id>/` - Project Details: View details of a specific project.
-`/edit_project_title/<int:project_id>/` - Edit Project Title: Change the title of a project.
-`/todo/new/<int:project_id>/` - Create Todo: Add a new todo to a project.
-`/todo/update/<int:pk>/` - Update Todo: Modify an existing todo.
-`/todo/delete/<int:pk>/` - Delete Todo: Remove a todo.
-`/todo/<int:pk>/` - Todo Details: View details of a specific task.
-`/project/export/<int:project_id>/` - Export Project Summary as Gist: Generate and export a project summary in Markdown format.
+ 1. `/` - Home Page: View all projects and todos.
+ 2. `/login/` - Login Page: User login.
+ 3. `/logout/` - Logout: End the current user session.
+ 4. `/register/` - Registration Page: Create a new user account.
+ 5. `/project/new/` - Create Project: Create a new project.
+ 6. `/todo/delete/<int:pk>/` - Delete Project: Remove a project.
+ 7. `/view_project/<int:project_id>/` - Project Details: View details of a specific project.
+ 8. `/edit_project_title/<int:project_id>/` - Edit Project Title: Change the title of a project.
+ 9. `/todo/new/<int:project_id>/` - Create Todo: Add a new todo to a project.
+ 10. `/todo/update/<int:pk>/` - Update Todo: Modify an existing todo.
+ 11. `/todo/delete/<int:pk>/` - Delete Todo: Remove a todo.
+ 12. `/todo/<int:pk>/` - Todo Details: View details of a specific task.
+ 13. `/project/export/<int:project_id>/` - Export Project Summary as Gist: Generate and export a project summary in Markdown format.
 
 
 ## Contributing

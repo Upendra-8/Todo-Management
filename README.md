@@ -1,5 +1,4 @@
-# Take-Home-Challenge---Hatio
- 
+
 # Todo Management Project
 ## Overview
 Welcome to the Todo Management Project! This Django application allows users to manage tasks (todos) within projects. Features include creating, updating, deleting projects and todos, managing todo status while updating the task, and exporting project summaries as GitHub Gists in Markdown format.
